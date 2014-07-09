@@ -55,35 +55,18 @@ var Rover = {
     w: [-1, 0]
   },
   turnRight: function () {
-    switch (this.orientation) {
-      case 'n':
-        this.orientation = 'e';
-      break;
-      case 'e':
-        this.orientation = 's';
-      break;
-      case 's':
-        this.orientation = 'w';
-      break;
-      case 'w':
-        this.orientation = 'n';
-      break;
-    }
+    this.turn('right');
   },
   turnLeft: function () {
-    switch (this.orientation) {
-      case 'n':
-        this.orientation = 'w';
-      break;
-      case 'w':
-        this.orientation = 's';
-      break;
-      case 's':
-        this.orientation = 'e';
-      break;
-      case 'e':
-        this.orientation = 'n';
-      break;
+    this.turn('left');
+  },
+  turn: function(direction) {
+    var currentIndex = this.orientations.indexOf(this.orientation);
+    var newIndex = currentIndex + (direction === 'right' ? 1 : -1);
+    if (newIndex < 0) {
+      newIndex = this.orientations.length + newIndex;
     }
-  }
+    this.orientation = this.orientations[newIndex];
+  },
+  orientations: 'nesw'
 };
