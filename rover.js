@@ -1,24 +1,3 @@
-
-var Grid = {
-  init: function (sizeX, sizeY) {
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
-    this.obstacles = [];
-  },
-  setObstacles: function (obstacles) {
-    this.obstacles = obstacles;
-  },
-  thereIsObstacle: function (x, y) {
-    for (var i = 0; i < this.obstacles.length; i++) {
-      var obstacle = this.obstacles[i];
-      if (obstacle[0] === x && obstacle[1] === y) {
-        return true;
-      }
-    }
-    return false;
-  }
-};
-
 var Rover = {
   init: function (x, y, orientation) {
     this.position = [x, y];
@@ -137,19 +116,3 @@ var Rover = {
     }
   }
 };
-
-Grid.init(100, 100);
-Rover.init(0, 0, 'n');
-Rover.move('ffrff');
-console.log('Is in 2,2:' + (Rover.position[0] === 2 && Rover.position[1] === 2));
-
-Grid.init(2, 2);
-Rover.init(0, 0, 'n');
-Rover.move('bblbb');
-console.log('Is in 0,0:' + (Rover.position[0] === 0 && Rover.position[1] === 0));
-
-Grid.init(100, 100);
-Rover.init(0, 0, 'n');
-Grid.setObstacles([[2, 2]]);
-Rover.move('ffrff');
-console.log('Is in 1,2:' + (Rover.position[0] === 1 && Rover.position[1] === 2));
